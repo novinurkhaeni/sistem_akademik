@@ -13,6 +13,7 @@ class RiwayatUploadSeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 10 data riwayat upload menggunakan RiwayatUploadFactory
         RiwayatUpload::factory()->count(10)->create();
     }
 }
