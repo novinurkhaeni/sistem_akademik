@@ -11,6 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel jenis_penilaian dengan kolom:
+        // id sebagai primary key
+        // kode dengan tipe data string, panjang 30, dan bersifat unik
+        // nama dengan tipe data string, panjang 100
+        // kategori dengan tipe data string, panjang 30
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('jenis_penilaian', function (Blueprint $table) {
             $table->id();
             $table->string('kode', 30)->unique();

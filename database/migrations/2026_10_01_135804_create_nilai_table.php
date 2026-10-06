@@ -11,6 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel nilai dengan kolom:
+        // id sebagai primary key
+        // penilaian_id sebagai foreign key dari tabel penilaian, berdasarkan primary key dari tabel penilaian. Tolak penghapusan jika masih digunakan
+        // siswa_id sebagai foreign key dari tabel siswa, berdasarkan primary key dari tabel siswa. Tolak penghapusan jika masih digunakan
+        // nilai dengan tipe data desimal, dengan panjang sebelum koma 5, setelah koma 2
+        // catatan dengan tipe data text, boleh dikosongkan
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
 
@@ -26,6 +33,8 @@ return new class extends Migration
             $table->text('catatan')->nullable();
             $table->timestamps();
 
+            // Memastikan satu siswa hanya memiliki satu nilai
+            // untuk setiap penilaian yang sama.
             $table->unique(
                 ['penilaian_id', 'siswa_id'],
                 'nilai_penilaian_siswa_unique'
