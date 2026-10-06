@@ -11,6 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel kelas dengan kolom:
+        // id sebagai primary key
+        // nama_kelas dengan tipe data string, panjang 50
+        // tingkat dengan tipe data string, panjang 20
+        // jurusan dengan tipe data string, panjang 100, boleh dikosongkan
+        // tahun_ajaran_id sebagai foreign key dari tabel tahun_ajaran, berdasarkan primary key dari tabel tahun_ajaran. Tolak penghapusan jika masih digunakan
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kelas', 50);
@@ -23,6 +30,9 @@ return new class extends Migration
 
             $table->timestamps();
 
+            // Membuat kombinasi nama kelas dan tahun ajaran harus unik.
+            // Artinya, nama kelas yang sama boleh digunakan pada tahun ajaran berbeda,
+            // tetapi tidak boleh ada dua kelas dengan nama dan tahun ajaran yang sama.
             $table->unique(
                 ['nama_kelas', 'tahun_ajaran_id'],
                 'kelas_nama_tahun_unique'

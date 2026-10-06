@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel roles dengan kolom:
+        // id sebagai primary key
+        // nama_role dengan tipe data string, panjang 50, dan bersifat unik
+        // deskripsi dengan tipe data string, dan boleh dikosongkan. panjang kolom dikosongkan berarti otomatis menggunakan panjang maksimal string yaitu 255
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nama_role', 50)->unique();

@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel permissions dengan kolom:
+        // id sebagai primary key
+        // nama_permission dengan tipe data string, panjang 100, dan bersifat unik
+        // deskripsi dengan tipe data string, dan boleh dikosongkan. panjang kolom dikosongkan berarti otomatis menggunakan panjang maksimal string yaitu 255
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->string('nama_permission', 100)->unique();

@@ -11,6 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel mapel dengan kolom:
+        // id sebagai primary key
+        // kode_mapel dengan tipe data string, panjang 20, dan bersifat unik
+        // nama_mapel dengan tipe data string, panjang 100
+        // kelompok dengan tipe data string, panjang 50, dan boleh dikosongkan
+        // deskripsi dengan tipe data text, dan boleh dikosongkan
+        // is_active dengan tipe data boolean, defaultnya berisi true
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('mapel', function (Blueprint $table) {
             $table->id();
             $table->string('kode_mapel', 20)->unique();

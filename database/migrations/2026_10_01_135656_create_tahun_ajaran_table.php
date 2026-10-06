@@ -11,6 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel tahun_ajaran dengan kolom:
+        // id sebagai primary key
+        // nama dengan tipe data string, panjang 20, dan bersifat unik
+        // tanggal_mulai dengan tipe data date
+        // tanggal_selesai dengan tipe data date
+        // is_active dengan tipe data boolean, defaultnya berisi false
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('tahun_ajaran', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 20)->unique();

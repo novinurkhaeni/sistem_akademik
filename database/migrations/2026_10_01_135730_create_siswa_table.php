@@ -11,6 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel siswa dengan kolom:
+        // id sebagai primary key
+        // nis dengan tipe data string, panjang 30, bersifat unik
+        // nisn dengan tipe data string, panjang 20, bersifat unik, boleh dikosongkan
+        // nama dengan tipe data string, panjang 100
+        // jenis_kelamin dengan tipe data enum, boleh dikosongkan, pilihannya ada L dan P
+        // tanggal_lahir dengan tipe data date, boleh dikosongkan
+        // alamat dengan tipe data text, boleh dikosongkan
+        // kelas_id sebagai foreign key dari tabel kelas, berdasarkan primary key dari tabel kelas. Boleh dikosongkan, Tolak penghapusan jika masih digunakan
+        // photo dengan tipe data string, panjang 255, boleh dikosongkan
+        // status dengan tipe data string, panjang 20, defaultnya berisi aktif
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 30)->unique();

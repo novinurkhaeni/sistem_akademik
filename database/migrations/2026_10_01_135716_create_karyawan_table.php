@@ -11,6 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // membuat tabel karyawan dengan kolom:
+        // id sebagai primary key
+        // nip dengan tipe data string, panjang 30, boleh dikosongkan dan bersifat unik
+        // nama dengan tipe data string, panjang 100
+        // jabatan dengan tipe data string, panjang 100, boleh dikosongkan
+        // email dengan tipe data string, dan boleh dikosongkan. panjang kolom dikosongkan berarti otomatis menggunakan panjang maksimal string yaitu 255
+        // no_hp dengan tipe data string, panjang 20, dan boleh dikosongkan
+        // alamat dengan tipe data text, boleh dikosongkan
+        // photo dengan tipe data string, panjang 255, boleh dikosongkan
+        // status dengan tipe data string, panjang 20, defaultnya berisi aktif
+        // timestamps untuk membuat kolom created_at dan updated_at
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
             $table->string('nip', 30)->nullable()->unique();
