@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Jadwal extends Model
 {
@@ -29,4 +30,9 @@ class Jadwal extends Model
         'jam_selesai',
         'ruang',
     ];
+
+    public function dataMengajar(): BelongsTo
+    {
+        return $this->belongsTo(DataMengajar::class, 'data_mengajar_id');
+    }
 }

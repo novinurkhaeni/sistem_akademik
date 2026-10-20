@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Karyawan extends Model
 {
@@ -32,4 +33,9 @@ class Karyawan extends Model
         'photo',
         'status',
     ];
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class, 'karyawan_id');
+    }
 }

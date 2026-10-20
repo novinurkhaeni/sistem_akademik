@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TahunAjaran extends Model
 {
@@ -50,5 +51,15 @@ class TahunAjaran extends Model
             // Nilai 1 menjadi true dan nilai 0 menjadi false.
             'is_active' => 'boolean',
         ];
+    }
+
+    public function kelas(): HasMany
+    {
+        return $this->hasMany(Kelas::class, 'tahun_ajaran_id');
+    }
+
+    public function dataMengajar(): HasMany
+    {
+        return $this->hasMany(DataMengajar::class, 'tahun_ajaran_id');
     }
 }

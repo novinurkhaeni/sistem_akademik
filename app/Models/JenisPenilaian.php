@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JenisPenilaian extends Model
 {
@@ -27,4 +28,9 @@ class JenisPenilaian extends Model
         'nama',
         'kategori',
     ];
+
+    public function penilaian(): HasMany
+    {
+        return $this->hasMany(Penilaian::class, 'jenis_penilaian_id');
+    }
 }
