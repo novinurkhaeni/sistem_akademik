@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Guru extends Model
 {
@@ -33,4 +34,14 @@ class Guru extends Model
         'photo',
         'status',
     ];
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class, 'guru_id');
+    }
+
+    public function dataMengajar(): HasMany
+    {
+        return $this->hasMany(DataMengajar::class, 'guru_id');
+    }
 }

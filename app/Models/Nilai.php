@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Nilai extends Model
 {
@@ -38,5 +39,15 @@ class Nilai extends Model
             // Contoh: 85 akan menjadi 85.00 dan 87.5 menjadi 87.50.
             'nilai' => 'decimal:2',
         ];
+    }
+
+    public function penilaian(): BelongsTo
+    {
+        return $this->belongsTo(Penilaian::class, 'penilaian_id');
+    }
+
+    public function siswa(): BelongsTo
+    {
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 }

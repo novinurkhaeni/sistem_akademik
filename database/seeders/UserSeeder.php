@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 20 data guru menggunakan UserFactory
         User::factory()->count(20)->create();
     }
 }

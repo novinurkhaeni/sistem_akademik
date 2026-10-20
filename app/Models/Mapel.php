@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Mapel extends Model
 {
@@ -40,5 +41,10 @@ class Mapel extends Model
         return [
             'is_active' => 'boolean',
         ];
+    }
+
+    public function dataMengajar(): HasMany
+    {
+        return $this->hasMany(DataMengajar::class, 'mapel_id');
     }
 }

@@ -13,6 +13,7 @@ class SiswaSeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 100 data siswa menggunakan SiswaFactory
         Siswa::factory()->count(100)->create();
     }
 }

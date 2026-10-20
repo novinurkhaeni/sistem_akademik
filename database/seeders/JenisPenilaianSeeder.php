@@ -13,6 +13,7 @@ class JenisPenilaianSeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 5 data jenis penilaian menggunakan JenisPenilaianFactory
         JenisPenilaian::factory()->count(5)->create();
     }
 }

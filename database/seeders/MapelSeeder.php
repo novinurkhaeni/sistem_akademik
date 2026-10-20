@@ -13,6 +13,7 @@ class MapelSeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 10 data mapel menggunakan MapelFactory
         Mapel::factory()->count(10)->create();
     }
 }
