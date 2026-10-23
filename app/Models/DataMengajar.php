@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DataMengajar extends Model
+// Mengaktifkan fitur HasFactory agar model dapat digunakan
 {
-    // Mengaktifkan fitur HasFactory agar model dapat digunakan
     // untuk membuat data dummy menggunakan Laravel Factory.
     use HasFactory;
 

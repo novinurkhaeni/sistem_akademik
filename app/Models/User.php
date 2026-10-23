@@ -19,11 +19,6 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
 
-    // Menentukan nama tabel yang digunakan oleh model.
-    // Model User menggunakan tabel "users".
-    protected $table = 'users';
-
-
     // Menentukan primary key tabel.
     // Primary key pada tabel users adalah kolom "id".
     protected $primaryKey = 'id';
