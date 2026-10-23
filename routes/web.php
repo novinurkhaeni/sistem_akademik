@@ -34,12 +34,6 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/auth/login', [AuthController::class, 'login'])
         ->name('auth.login.submit');
-
-    Route::get('/auth/register', [AuthController::class, 'showRegistrationForm'])
-        ->name('auth.register');
-
-    Route::post('/auth/register', [AuthController::class, 'register'])
-        ->name('auth.register.submit');
 });
 
 Route::post('/auth/logout', [AuthController::class, 'logout'])
@@ -171,6 +165,6 @@ Route::middleware('auth')->group(function () {
                 ->name('dashboard');
 
             Route::get('/nilai', [NilaiController::class, 'nilaiSiswa'])
-                ->name('nilai');
+                ->name('nilai.index');
         });
 });

@@ -2,63 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class MapelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $mapel = Mapel::latest()->paginate(10);
+
+        return view('mapel.index', compact('mapel'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('mapel.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'kode_mapel' => ['required', 'string', 'max:50', 'unique:mapel,kode_mapel'],
+            'nama_mapel' => ['required', 'string', 'max:255'],
+            'kelompok' => ['nullable', 'string', 'max:100'],
+            'deskripsi' => ['nullable', 'string'],
+            'is_active' => ['required', 'boolean'],
+        ]);
+
+        Mapel::create($data);
+
+        return redirect()->route('superadmin.mapel.index')
+            ->with('success', 'Mata pelajaran berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Mapel $mapel)
     {
-        //
+        return view('mapel.show', compact('mapel'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Mapel $mapel)
     {
-        //
+        return view('mapel.edit', compact('mapel'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Mapel $mapel)
     {
-        //
+        $data = $request->validate([
+            'kode_mapel' => [
+                'required', 'string', 'max:50',
+                Rule::unique('mapel', 'kode_mapel')->ignore($mapel->id),
+            ],
+            'nama_mapel' => ['required', 'string', 'max:255'],
+            'kelompok' => ['nullable', 'string', 'max:100'],
+            'deskripsi' => ['nullable', 'string'],
+            'is_active' => ['required', 'boolean'],
+        ]);
+
+        $mapel->update($data);
+
+        return redirect()->route('superadmin.mapel.index')
+            ->with('success', 'Mata pelajaran berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Mapel $mapel)
     {
-        //
+        try {
+            $mapel->delete();
+
+            return redirect()->route('superadmin.mapel.index')
+                ->with('success', 'Mata pelajaran berhasil dihapus.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('superadmin.mapel.index')
+                ->with('error', 'Mata pelajaran masih digunakan pada data mengajar.');
+        }
     }
 }
