@@ -100,6 +100,7 @@ Route::middleware('auth')->group(function () {
     // atau diarahkan ke dashboard masing-masing role setelah login.
     // www.marsa.com/dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->middleware('role:superadmin,admin_tu,guru,siswa')
         ->name('dashboard');
 
 

@@ -10,9 +10,9 @@ class DashboardController extends Controller
     {
         $user = $request->user();
 
-        if (! $user || ! $user->is_active) {
-            abort(403, 'Akun tidak aktif atau tidak memiliki akses.');
-        }
+        // if (! $user || ! $user->is_active) {
+        //     abort(403, 'Akun tidak aktif atau tidak memiliki akses.');
+        // }
 
         $role = $user->role?->nama_role;
 
@@ -27,6 +27,6 @@ class DashboardController extends Controller
             abort(403, 'Role pengguna tidak dikenali.');
         }
 
-        return view($views[$role], compact('user'));
+        return view($views[$role], ['user' => $user]);
     }
 }

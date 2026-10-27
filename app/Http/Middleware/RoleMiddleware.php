@@ -35,7 +35,7 @@ class RoleMiddleware
      * @param Request $request Objek request HTTP yang sedang diproses.
      * @param Closure $next Fungsi untuk meneruskan request ke middleware
      *                      berikutnya atau ke controller.
-     * @param string ...$roles Daftar role yang diizinkan mengakses route.
+     * @param string ...$roles Daftar role yang diizinkan mengakses route, didapat dari file route.
      *
      * @return Response Respons HTTP yang dihasilkan oleh proses berikutnya.
      */
@@ -81,6 +81,7 @@ class RoleMiddleware
         //
         // Jika role tidak tersedia atau tidak diizinkan, hentikan request
         // dengan HTTP 403 Forbidden.
+        // jika $namaRole kosong atau $namaRole tidak berada di daftar maka abort 403
         if (! $namaRole || ! in_array($namaRole, $roles, true)) {
             abort(403, 'Anda tidak memiliki izin untuk mengakses halaman ini.');
         }
