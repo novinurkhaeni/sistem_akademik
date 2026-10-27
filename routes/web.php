@@ -100,7 +100,7 @@ Route::middleware('auth')->group(function () {
     // atau diarahkan ke dashboard masing-masing role setelah login.
     // www.marsa.com/dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard.index');
+        ->name('dashboard');
 
 
     // ==================================================
