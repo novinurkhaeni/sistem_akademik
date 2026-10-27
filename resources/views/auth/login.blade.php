@@ -26,7 +26,7 @@
 
                             <input type="text" name="login" id="login" value="{{ old('login') }}"
                                 class="form-control @error('login') is-invalid @enderror"
-                                placeholder="Masukkan username atau email" autocomplete="username" required>
+                                placeholder="Masukkan username atau email" autocomplete="username">
 
                             @error('login')
                                 <div class="invalid-feedback">
@@ -40,8 +40,14 @@
                                 Password
                             </label>
 
-                            <input type="password" name="password" id="password" class="form-control"
-                                placeholder="Masukkan password" autocomplete="current-password" required>
+                            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror"
+                                placeholder="Masukkan password" autocomplete="current-password">
+
+                            @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">

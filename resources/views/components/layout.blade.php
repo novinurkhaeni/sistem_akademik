@@ -197,7 +197,8 @@
         @endif
 
         {{-- Error validasi --}}
-        @if ($errors->any())
+        {{-- {{ dd($errors) }} --}}
+        {{-- @if ($errors->any())
             <div class="alert alert-danger mt-3" role="alert">
                 <strong>Terjadi kesalahan:</strong>
                 <ul class="mb-0 mt-2">
@@ -206,7 +207,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
 
         {{ $slot }}
 

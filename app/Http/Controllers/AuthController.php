@@ -17,11 +17,12 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'login' => ['required', 'string'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:8', 'max:15'],
         ], [
             'login.required' => 'Username atau email wajib diisi.',
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Password minimal harus terdiri dari 8 karakter.',
+            'password.max' => 'Password maksimal harus terdiri dari 15 karakter.',
         ]);
 
         $user = User::where('username', $credentials['login'])
@@ -49,7 +50,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'))
+        return redirect()->intended(route('dashboard.index'))
             ->with('success', 'Login berhasil.');
     }
 

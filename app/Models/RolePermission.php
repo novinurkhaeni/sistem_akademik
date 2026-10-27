@@ -27,8 +27,8 @@ class RolePermission extends Model
     // Kolom-kolom ini digunakan untuk menghubungkan role
     // dengan permission.
     protected $fillable = [
-        'role_id',
-        'permission_id',
+        'role_id', //FK
+        'permission_id', //FK
     ];
 
     public function role(): BelongsTo
