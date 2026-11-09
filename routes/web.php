@@ -45,8 +45,9 @@ Route::get('/', function () {
 // membuka kembali halaman login.
 Route::middleware('guest')->group(function () {
 
+    // alamat web: marsa.com
     // Menampilkan formulir login.
-    // URL  : /auth/login
+    // URL  : marsa.com/auth/login
     // Nama : auth.login
     // www.marsa.com/auth/login
     Route::get('/auth/login', [AuthController::class, 'showLoginForm'])
@@ -87,7 +88,6 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])
 // 4. Guru.
 // 5. Siswa.
 Route::middleware('auth')->group(function () {
-
     // --------------------------------------------------
     // DASHBOARD UMUM
     // --------------------------------------------------
@@ -103,7 +103,6 @@ Route::middleware('auth')->group(function () {
         ->middleware('role:superadmin,admin_tu,guru,siswa')
         ->name('dashboard');
 
-
     // ==================================================
     // SUPERADMIN
     // ==================================================
@@ -113,19 +112,34 @@ Route::middleware('auth')->group(function () {
     // - Memiliki awalan nama route superadmin.
     // - Hanya dapat diakses oleh pengguna dengan role superadmin.
     //
+    // resource: mengambil semua function di controller
+    // prefix: imbuhan url yang ditaruh didepan
     // Contoh:
-    // URL  : /superadmin/siswa
-    // Nama : superadmin.siswa.index
+    // URL  : 
+    // superadmin/guru (GET) INDEX
+    // superadmin/guru/create (GET) CREATE
+    // superadmin/guru (POST) STORE
+    // superadmin/guru/id_guru_amin (GET) SHOW
+    // superadmin/guru/id_guru_amin/edit (GET) EDIT
+    // superadmin/guru/id_guru_amin (PUT) UPDATE
+    // superadmin/guru/id_guru_amin (DELETE) DESTROY
+
+    // Nama : 
+    // superadmin.guru.index
+    // superadmin.guru.create
+    // superadmin.guru.store
+    // superadmin.guru.show
+    // superadmin.guru.edit
+    // superadmin.guru.update
+    // superadmin.guru.destroy
+
     Route::prefix('superadmin')
         ->name('superadmin.')
         ->middleware('role:superadmin')
         ->group(function () {
-
             // CRUD data siswa:
             // index, create, store, show, edit, update, destroy.
             Route::resource('siswa', SiswaController::class);
-
-            // CRUD data guru.
             Route::resource('guru', GuruController::class);
 
             // CRUD data karyawan.
