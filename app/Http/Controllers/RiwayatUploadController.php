@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RiwayatUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RiwayatUploadController extends Controller
 {
@@ -11,7 +12,7 @@ class RiwayatUploadController extends Controller
     {
         abort_unless(
             in_array(
-                auth()->user()->role?->nama_role,
+                Auth::user()->role?->nama_role,
                 ['superadmin', 'admin_tu'],
                 true
             ),
