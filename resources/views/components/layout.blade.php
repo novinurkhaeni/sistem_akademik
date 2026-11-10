@@ -111,6 +111,18 @@
 
                         @if (auth()->user()->role?->nama_role === 'admin_tu')
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin-tu.siswa.index') }}">
+                                    Siswa
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin-tu.guru.index') }}">
+                                    Guru
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin-tu.karyawan.index') }}">
                                     Karyawan
                                 </a>
@@ -141,6 +153,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('siswa.nilai.index') }}">
                                     Nilai Saya
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('siswa.data-mengajar.index') }}">
+                                    Jawal Pelajaran
                                 </a>
                             </li>
                         @endif
@@ -222,6 +239,7 @@
 
     {{-- Bootstrap JS Online --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 

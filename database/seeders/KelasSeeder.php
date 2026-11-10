@@ -63,6 +63,66 @@ class KelasSeeder extends Seeder
                 'tingkat' => 12,
                 'jurusan' => 'PPLG',
             ],
+            [
+                'nama_kelas' => 'X KULINER 1',
+                'tingkat' => 10,
+                'jurusan' => 'KULINER',
+            ],
+            [
+                'nama_kelas' => 'X KULINER 2',
+                'tingkat' => 10,
+                'jurusan' => 'KULINER',
+            ],
+            [
+                'nama_kelas' => 'XI KULINER 1',
+                'tingkat' => 11,
+                'jurusan' => 'KULINER',
+            ],
+            [
+                'nama_kelas' => 'XI KULINER 2',
+                'tingkat' => 11,
+                'jurusan' => 'KULINER',
+            ],
+            [
+                'nama_kelas' => 'XII KULINER 1',
+                'tingkat' => 12,
+                'jurusan' => 'KULINER',
+            ],
+            [
+                'nama_kelas' => 'XII KULINER 2',
+                'tingkat' => 12,
+                'jurusan' => 'KULINER',
+            ],
+            [
+                'nama_kelas' => 'X AKL 1',
+                'tingkat' => 10,
+                'jurusan' => 'AKUNTANSI',
+            ],
+            [
+                'nama_kelas' => 'X AKL 2',
+                'tingkat' => 10,
+                'jurusan' => 'AKUNTANSI',
+            ],
+            [
+                'nama_kelas' => 'XI AKL 1',
+                'tingkat' => 11,
+                'jurusan' => 'AKUNTANSI',
+            ],
+            [
+                'nama_kelas' => 'XI AKL 2',
+                'tingkat' => 11,
+                'jurusan' => 'AKUNTANSI',
+            ],
+            [
+                'nama_kelas' => 'XII AKL 1',
+                'tingkat' => 12,
+                'jurusan' => 'AKUNTANSI',
+            ],
+            [
+                'nama_kelas' => 'XII AKL 2',
+                'tingkat' => 12,
+                'jurusan' => 'AKUNTANSI',
+            ],
         ];
 
         // Melakukan perulangan untuk setiap kelas

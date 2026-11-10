@@ -40,11 +40,13 @@ class RolePermissionSeeder extends Seeder
                 'kelola_penilaian',           // Mengelola data penilaian.
                 'input_nilai',                // Menginput nilai siswa.
                 'lihat_nilai',                // Melihat nilai.
+                'lihat_jadwal',
             ])->pluck('id')->all(),
 
             // Siswa hanya mendapatkan permission untuk melihat nilai.
             'siswa' => Permission::whereIn('nama_permission', [
                 'lihat_nilai',                // Melihat nilai sendiri.
+                'lihat_jadwal',
             ])->pluck('id')->all(),
         ];
 

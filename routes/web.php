@@ -219,29 +219,13 @@ Route::middleware('auth')->group(function () {
             // KELOLA DATA KARYAWAN
             // ------------------------------------------
 
-            // Menampilkan daftar karyawan.
-            Route::get('/karyawan', [KaryawanController::class, 'index'])
-                ->name('karyawan.index');
-
-            // Menampilkan formulir tambah karyawan.
-            Route::get('/karyawan/create', [KaryawanController::class, 'create'])
-                ->name('karyawan.create');
-
-            // Menyimpan data karyawan baru.
-            Route::post('/karyawan', [KaryawanController::class, 'store'])
-                ->name('karyawan.store');
-
-            // Menampilkan detail seorang karyawan.
-            Route::get('/karyawan/{karyawan}', [KaryawanController::class, 'show'])
-                ->name('karyawan.show');
-
-            // Menampilkan formulir edit karyawan.
-            Route::get('/karyawan/{karyawan}/edit', [KaryawanController::class, 'edit'])
-                ->name('karyawan.edit');
-
-            // Memperbarui data karyawan yang dipilih.
-            Route::put('/karyawan/{karyawan}', [KaryawanController::class, 'update'])
-                ->name('karyawan.update');
+            // Membuat route resource untuk karyawan, kecuali destroy.
+            // admin-tu dapat menggunakan route index, create, store,
+            // show, edit, dan update.
+            // Route destroy tidak dibuat agar admin-tu tidak dapat
+            // menghapus data karyawan melalui resource ini.
+            Route::resource('karyawan', PenilaianController::class)
+                ->except(['destroy']);
 
 
             // ------------------------------------------
@@ -367,5 +351,10 @@ Route::middleware('auth')->group(function () {
             // melihat nilai miliknya sendiri, bukan nilai siswa lain.
             Route::get('/nilai', [NilaiController::class, 'nilaiSiswa'])
                 ->name('nilai.index');
+
+            Route::get('/data-mengajar', [
+                DataMengajarController::class,
+                'indexGuru'
+            ])->name('data-mengajar.index');
         });
 });

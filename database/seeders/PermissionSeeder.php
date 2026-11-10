@@ -56,6 +56,8 @@ class PermissionSeeder extends Seeder
             // Hak untuk memasukkan atau mengubah nilai
             'input_nilai' => 'Menginput nilai',
 
+            'lihat_jadwal' => 'Lihat jadwal',
+
             // Hak untuk mengunggah data melalui file
             'upload_data' => 'Mengunggah data',
 
